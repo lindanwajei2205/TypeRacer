@@ -41,6 +41,7 @@
                             The cat sat on the mat.
                         </div>
                     </div>
+            
                     <div class="mb-3">
                         <label class="form-label visually-hidden" for="user-input">Type Here</label>
                         <textarea class="form-control" id="user-input" rows="6" placeholder="Click the start button to begin the test"></textarea>
@@ -73,15 +74,58 @@
     
 
 
-
-
-
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- font awesome kit -->
     <script src="https://kit.fontawesome.com/59366ec096.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const easyTexts = [
+            "The cat sat on the mat.",
+            "A quick brown fox jumps over the lazy dog.",
+            "She sells seashells by the seashore."
+        ];
+    
+        const mediumTexts = [
+            "To be or not to be, that is the question.",
+            "All that glitters is not gold.",
+            "A journey of a thousand miles begins with a single step."
+        ];
+    
+        const hardTexts = [
+            "It was the best of times, it was the worst of times.",
+            "In the beginning God created the heavens and the earth.",
+            "The only thing we have to fear is fear itself."
+        ];
+    
+        const difficultySelect = document.getElementById('difficulty');
+        const sampleTextDiv = document.getElementById('sample-text');
+    
+        function getRandomText(textArray) {
+            const randomIndex = Math.floor(Math.random() * textArray.length);
+            return textArray[randomIndex];
+        }
+    
+        function updateSampleText() {
+            let selectedDifficulty = difficultySelect.value;
+            let selectedText;
+    
+            if (selectedDifficulty === 'easy') {
+                selectedText = getRandomText(easyTexts);
+            } else if (selectedDifficulty === 'medium') {
+                selectedText = getRandomText(mediumTexts);
+            } else if (selectedDifficulty === 'hard') {
+                selectedText = getRandomText(hardTexts);
+            }
+    
+            sampleTextDiv.textContent = selectedText;
+        }
+    
+        difficultySelect.addEventListener('change', updateSampleText);
+    
+        // Initialize with a random text from the default difficulty level
+        updateSampleText();
+    });
+    </script>
 </body>
 </html>
